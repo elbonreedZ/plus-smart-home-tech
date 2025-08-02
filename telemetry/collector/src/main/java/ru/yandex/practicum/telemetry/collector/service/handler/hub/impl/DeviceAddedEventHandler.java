@@ -23,8 +23,7 @@ public class DeviceAddedEventHandler extends BaseHubEventHandler<DeviceAddedEven
 
     @Override
     public void handle(HubEvent event) {
-
-
+        eventProducer.sendHubEvent(mapToHubEventAvro(event));
     }
 
     @Override
