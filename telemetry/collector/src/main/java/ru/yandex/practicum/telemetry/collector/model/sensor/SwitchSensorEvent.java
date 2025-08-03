@@ -1,5 +1,6 @@
 package ru.yandex.practicum.telemetry.collector.model.sensor;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,8 +12,8 @@ import lombok.experimental.FieldDefaults;
 @ToString(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class SwitchSensorEvent extends SensorEvent {
-
-    boolean state;
+    @NotNull
+    Boolean state;
 
     @Override
     public SensorEventType getType() {

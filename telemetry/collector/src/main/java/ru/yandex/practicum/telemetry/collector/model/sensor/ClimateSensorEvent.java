@@ -1,5 +1,6 @@
 package ru.yandex.practicum.telemetry.collector.model.sensor;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,9 +12,12 @@ import lombok.experimental.FieldDefaults;
 @ToString(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ClimateSensorEvent extends SensorEvent {
-    int temperatureC;
-    int humidity;
-    int co2Level;
+    @NotNull
+    Integer temperatureC;
+    @NotNull
+    Integer humidity;
+    @NotNull
+    Integer co2Level;
 
     @Override
     public SensorEventType getType() {

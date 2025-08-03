@@ -6,25 +6,38 @@ import org.apache.avro.specific.SpecificRecordBase;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.stereotype.Component;
-import ru.yandex.practicum.telemetry.collector.utils.KafkaTopic;
+import ru.yandex.practicum.kafka.telemetry.event.HubEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.SensorEventAvro;
+import ru.yandex.practicum.telemetry.collector.config.KafkaTopicsProperties;
 
+import java.security.Timestamp;
 import java.time.Duration;
+import java.time.Instant;
 
 @Component
 @RequiredArgsConstructor
 public class EventProducer {
-    private final Producer<Void, SpecificRecordBase> producer;
+    private final Producer<String, SpecificRecordBase> producer;
+    private final KafkaTopicsProperties kafkaTopics;
 
-    private void send(String topic, SpecificRecordBase event) {
-        producer.send(new ProducerRecord<>(topic, null, event));
+    private void send(String topic, SpecificRecordBase event, long timestamp, String key) {
+        ProducerRecord<String, SpecificRecordBase> producerRecord = new ProducerRecord<>(
+                topic, null, timestamp, key, event);
+        producer.send(producerRecord);
     }
 
     public void sendSensorEvent(SpecificRecordBase event) {
-        send(KafkaTopic.TELEMETRY_SENSORS_V1.getTopicName(), event);
+        SensorEventAvro avroEvent = (SensorEventAvro) event;
+        String hubId = avroEvent.getHubId();
+        long timestamp = avroEvent.getTimestamp().toEpochMilli();
+        send(kafkaTopics.getTelemetrySensorsV1(), event, timestamp, hubId);
     }
 
     public void sendHubEvent(SpecificRecordBase event) {
-        send(KafkaTopic.TELEMETRY_HUBS_V1.getTopicName(), event);
+        HubEventAvro avroEvent = (HubEventAvro) event;
+        String hubId = avroEvent.getHubId();
+        long timestamp = avroEvent.getTimestamp().toEpochMilli();
+        send(kafkaTopics.getTelemetryHubsV1(), event, timestamp, hubId);
     }
 
     @PreDestroy
