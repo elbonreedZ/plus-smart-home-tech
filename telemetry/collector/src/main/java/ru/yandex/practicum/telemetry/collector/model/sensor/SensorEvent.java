@@ -1,7 +1,10 @@
 package ru.yandex.practicum.telemetry.collector.model.sensor;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.Nulls;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +17,7 @@ import java.time.Instant;
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.EXISTING_PROPERTY,
         property = "type",
-        defaultImpl = SensorEventType.class
+        defaultImpl = SensorEvent.class
 )
 @JsonSubTypes({
         @JsonSubTypes.Type(value = LightSensorEvent.class, name = "LIGHT_SENSOR_EVENT"),
@@ -28,9 +31,12 @@ import java.time.Instant;
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public abstract class SensorEvent {
+    @NotNull
     String id;
+    @NotNull
     String hubId;
-    Instant timestamp;
+    @JsonSetter(nulls = Nulls.SKIP)
+    Instant timestamp = Instant.now();
 
     public abstract SensorEventType getType();
 }

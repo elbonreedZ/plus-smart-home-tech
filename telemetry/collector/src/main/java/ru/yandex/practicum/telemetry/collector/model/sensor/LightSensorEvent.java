@@ -1,5 +1,6 @@
 package ru.yandex.practicum.telemetry.collector.model.sensor;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,8 +12,10 @@ import lombok.experimental.FieldDefaults;
 @ToString(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class LightSensorEvent extends SensorEvent {
-    int linkQuality;
-    int luminosity;
+    @NotNull
+    Integer linkQuality;
+    @NotNull
+    Integer luminosity;
 
     @Override
     public SensorEventType getType() {

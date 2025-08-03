@@ -1,12 +1,14 @@
 package ru.yandex.practicum.telemetry.collector.model.hub;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.Nulls;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import ru.yandex.practicum.telemetry.collector.model.hub.enumeration.HubEventType;
-import ru.yandex.practicum.telemetry.collector.model.sensor.SensorEventType;
 
 import java.time.Instant;
 
@@ -14,7 +16,7 @@ import java.time.Instant;
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.EXISTING_PROPERTY,
         property = "type",
-        defaultImpl = SensorEventType.class
+        defaultImpl = HubEvent.class
 )
 @JsonSubTypes({
         @JsonSubTypes.Type(value = DeviceAddedEvent.class, name = "DEVICE_ADDED"),
@@ -26,7 +28,9 @@ import java.time.Instant;
 @Setter
 @ToString
 public abstract class HubEvent {
+    @NotNull
     private String hubId;
+    @JsonSetter(nulls = Nulls.SKIP)
     private Instant timestamp;
 
     public abstract HubEventType getType();
