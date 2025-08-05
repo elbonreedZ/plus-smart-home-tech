@@ -1,5 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS public;
 
+DROP TABLE IF EXISTS scenario_actions, scenario_conditions, actions, conditions, sensors, scenarios;
 -- создаём таблицу scenarios
 CREATE TABLE IF NOT EXISTS scenarios (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

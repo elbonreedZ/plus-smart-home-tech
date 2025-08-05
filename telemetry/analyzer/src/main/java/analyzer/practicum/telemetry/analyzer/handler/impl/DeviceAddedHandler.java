@@ -1,9 +1,9 @@
 package analyzer.practicum.telemetry.analyzer.handler.impl;
 
+import analyzer.practicum.telemetry.analyzer.dal.mapper.SensorMapper;
 import analyzer.practicum.telemetry.analyzer.dal.model.Sensor;
 import analyzer.practicum.telemetry.analyzer.dal.service.SensorService;
 import analyzer.practicum.telemetry.analyzer.handler.HubEventHandler;
-import analyzer.practicum.telemetry.analyzer.dal.mapper.SensorMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.yandex.practicum.kafka.telemetry.event.DeviceAddedEventAvro;

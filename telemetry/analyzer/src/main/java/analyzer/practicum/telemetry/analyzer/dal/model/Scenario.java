@@ -12,6 +12,7 @@ import java.util.Map;
 @Setter
 @ToString
 @Entity
+@Table(name = "scenarios")
 public class Scenario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,18 +23,18 @@ public class Scenario {
     private String name;
 
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @MapKeyColumn(
-            table = "scenarios_conditions",
+            table = "scenario_conditions",
             name = "sensor_id")
     @JoinTable(
-            name = "scenarios_conditions",
+            name = "scenario_conditions",
             joinColumns = @JoinColumn(name = "scenario_id"),
             inverseJoinColumns = @JoinColumn(name = "condition_id")
     )
     private Map<String, Condition> conditions = new HashMap<>();
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @MapKeyColumn(
             table = "scenario_actions",
             name = "sensor_id"

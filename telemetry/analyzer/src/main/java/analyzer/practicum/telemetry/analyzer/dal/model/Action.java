@@ -10,6 +10,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@Table(name = "actions")
 public class Action {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

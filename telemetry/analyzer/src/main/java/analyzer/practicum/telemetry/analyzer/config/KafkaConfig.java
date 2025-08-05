@@ -4,7 +4,6 @@ import org.apache.avro.specific.SpecificRecordBase;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -53,13 +52,11 @@ public class KafkaConfig {
 
     @Bean
     @Scope("prototype")
-    KafkaClient getClient() {
+    public KafkaClient getClient() {
         return new KafkaClient() {
 
             private Consumer<String, SpecificRecordBase> consumerHub;
             private Consumer<String, SpecificRecordBase> consumerSnapshot;
-
-            private Producer<String, SpecificRecordBase> producer;
 
             @Override
             public Consumer<String, SpecificRecordBase> getConsumerHub() {

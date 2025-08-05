@@ -1,9 +1,9 @@
 package analyzer.practicum.telemetry.analyzer.handler.impl;
 
+import analyzer.practicum.telemetry.analyzer.dal.mapper.ScenarioMapper;
 import analyzer.practicum.telemetry.analyzer.dal.model.Scenario;
 import analyzer.practicum.telemetry.analyzer.dal.service.ScenarioService;
 import analyzer.practicum.telemetry.analyzer.handler.HubEventHandler;
-import analyzer.practicum.telemetry.analyzer.dal.mapper.ScenarioMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.yandex.practicum.kafka.telemetry.event.HubEventAvro;

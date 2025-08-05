@@ -18,6 +18,7 @@ public class HubRouterController {
 
     public void sendAction(DeviceActionRequest deviceActionRequest) {
         try {
+            log.info("HUB REQUEST: {}", deviceActionRequest);
             hubRouterClient.handleDeviceAction(deviceActionRequest);
         } catch (Exception e) {
             log.error("Couldn't send data");

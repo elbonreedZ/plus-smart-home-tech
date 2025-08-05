@@ -77,6 +77,7 @@ public class SnapshotProcessor {
 
     private void handleRecord(ConsumerRecord<String, SpecificRecordBase> record) {
         if (record.value() instanceof SensorsSnapshotAvro snapshot) {
+            log.info("Пришёл снепшот: hubId = {}, states = {}", snapshot.getHubId(), snapshot.getSensorsState());
             snapshotAnalyzer.handleSnapshot(snapshot);
         }
     }

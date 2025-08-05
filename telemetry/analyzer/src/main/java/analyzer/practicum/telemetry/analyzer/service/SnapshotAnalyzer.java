@@ -7,16 +7,17 @@ import analyzer.practicum.telemetry.analyzer.dal.model.Scenario;
 import analyzer.practicum.telemetry.analyzer.dal.model.enumeration.ConditionType;
 import analyzer.practicum.telemetry.analyzer.dal.service.ScenarioService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.yandex.practicum.grpc.telemetry.event.DeviceActionRequest;
 import ru.yandex.practicum.kafka.telemetry.event.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class SnapshotAnalyzer {
     private final ScenarioService scenarioService;
     private final HubRouterController hubRouterController;
@@ -26,19 +27,25 @@ public class SnapshotAnalyzer {
         String hubId = sensorsSnapshotAvro.getHubId();
         Map<String, SensorStateAvro> states = sensorsSnapshotAvro.getSensorsState();
         List<Scenario> scenarios = scenarioService.getByHubId(hubId);
+        log.info("Для снепшота hubId = {}, найдены сценарии: {}", hubId, scenarios);
         scenarios.stream()
                 .filter(scenario -> checkConditions(scenario, states))
                 .forEach(this::executeActions);
     }
 
     private boolean checkConditions(Scenario scenario, Map<String, SensorStateAvro> states) {
-        List<Condition> conditions = new ArrayList<>();
         Map<String, Condition> conditionsMap = scenario.getConditions();
-        return conditionsMap.entrySet().stream().allMatch(entry -> evaluateCondition(entry.getKey(), entry.getValue(),states));
+        if (conditionsMap.isEmpty()) {
+            log.info("Conditions is empty");
+        }
+        if (scenario.getActions().isEmpty()) {
+            log.info("Actions is empty");
+        }
+        return conditionsMap.entrySet().stream().allMatch(entry ->
+                evaluateCondition(entry.getKey(), entry.getValue(), states.get(entry.getKey())));
     }
 
-    private boolean evaluateCondition(String sensorId, Condition condition, Map<String, SensorStateAvro> states) {
-        SensorStateAvro state = states.get(condition.getSensorId());
+    private boolean evaluateCondition(String sensorId, Condition condition, SensorStateAvro state) {
         if (state == null) {
             return false;
         }
@@ -67,6 +74,7 @@ public class SnapshotAnalyzer {
     }
 
     private void executeActions(Scenario scenario) {
+        log.info("Сработавший сценарий: {}", scenario.getActions());
         List<DeviceActionRequest> requests = actionRequestProtoMapper.toActionRequest(scenario);
         requests.forEach(hubRouterController::sendAction);
     }
