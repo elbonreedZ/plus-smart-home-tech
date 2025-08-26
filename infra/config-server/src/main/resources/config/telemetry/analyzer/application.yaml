@@ -12,6 +12,7 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: telemetry_analyzer
   sql:
     init:
       mode: always
