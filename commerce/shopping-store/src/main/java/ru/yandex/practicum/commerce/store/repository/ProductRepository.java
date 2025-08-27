@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
-import ru.yandex.practicum.commerce.dto.ProductCategory;
-import ru.yandex.practicum.commerce.dto.QuantityState;
+import ru.yandex.practicum.commerce.enums.ProductCategory;
+import ru.yandex.practicum.commerce.enums.QuantityState;
 import ru.yandex.practicum.commerce.store.model.ProductEntity;
 
 import java.util.Optional;

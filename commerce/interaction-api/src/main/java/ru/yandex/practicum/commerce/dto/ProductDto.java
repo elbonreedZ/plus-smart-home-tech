@@ -2,6 +2,9 @@ package ru.yandex.practicum.commerce.dto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import ru.yandex.practicum.commerce.enums.ProductCategory;
+import ru.yandex.practicum.commerce.enums.ProductState;
+import ru.yandex.practicum.commerce.enums.QuantityState;
 
 import java.math.BigDecimal;
 

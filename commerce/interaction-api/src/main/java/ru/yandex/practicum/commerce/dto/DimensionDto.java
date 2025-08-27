@@ -9,10 +9,10 @@ import lombok.*;
 @Builder
 public class DimensionDto {
     @NotNull
-    private double width;
+    private Float width;
     @NotNull
-    private double height;
+    private Float height;
     @NotNull
-    private double depth;
+    private Float depth;
 }
 

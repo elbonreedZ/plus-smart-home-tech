@@ -4,10 +4,10 @@ import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
-import ru.yandex.practicum.commerce.dto.ProductCategory;
+import ru.yandex.practicum.commerce.enums.ProductCategory;
 import ru.yandex.practicum.commerce.dto.ProductDto;
 import ru.yandex.practicum.commerce.dto.ProductPageDto;
-import ru.yandex.practicum.commerce.dto.QuantityState;
+import ru.yandex.practicum.commerce.enums.QuantityState;
 
 public interface ShoppingStoreOperations {
     @PutMapping

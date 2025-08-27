@@ -2,7 +2,6 @@ package ru.yandex.practicum.commerce.cart.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
-import ru.yandex.practicum.commerce.dto.CartProductDto;
 import ru.yandex.practicum.commerce.dto.ShoppingCartDto;
 import ru.yandex.practicum.commerce.cart.model.CartProduct;
 import ru.yandex.practicum.commerce.cart.model.ShoppingCartEntity;
@@ -34,9 +33,6 @@ public interface CartMapper {
         }
         return entity;
     }
-    CartProductDto toDto(CartProduct cartProduct);
-
-    CartProduct toEntity(CartProductDto cartProductDto);
 
     default Map<String, Integer> toDtoMap(List<CartProduct> cartProducts) {
         Map<String, Integer> products = new HashMap<>();

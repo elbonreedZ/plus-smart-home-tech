@@ -17,5 +17,5 @@ public class AddProductUnitRequest {
     private String productId;
     @NotNull
     @Min(value = 1, message = "You can add at least 1 item")
-    private int quantity;
+    private Integer quantity;
 }

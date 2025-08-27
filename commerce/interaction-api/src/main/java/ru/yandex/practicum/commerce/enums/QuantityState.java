@@ -1,4 +1,4 @@
-package ru.yandex.practicum.commerce.dto;
+package ru.yandex.practicum.commerce.enums;
 
 public enum QuantityState {
     ENDED,
