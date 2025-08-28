@@ -8,10 +8,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @SpringBootApplication
 @EnableAspectJAutoProxy
 @EnableFeignClients
-public class ShoppingCart
-{
-    public static void main( String[] args )
-    {
+public class ShoppingCart {
+    public static void main(String[] args) {
         SpringApplication.run(ShoppingCart.class, args);
     }
 }

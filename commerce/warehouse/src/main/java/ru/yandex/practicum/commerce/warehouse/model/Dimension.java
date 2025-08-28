@@ -1,6 +1,7 @@
 package ru.yandex.practicum.commerce.warehouse.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import lombok.Data;
 
 @Embeddable

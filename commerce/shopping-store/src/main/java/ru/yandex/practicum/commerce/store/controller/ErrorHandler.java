@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import ru.yandex.practicum.commerce.exception.ProductNotFoundException;
 import ru.yandex.practicum.commerce.dto.ErrorResponse;
+import ru.yandex.practicum.commerce.exception.ProductNotFoundException;
 
 import java.util.Objects;
 
@@ -25,7 +25,6 @@ public class ErrorHandler {
     public ErrorResponse handleProductNotFound(final ProductNotFoundException e) {
         return new ErrorResponse(e.getMessage());
     }
-
 
 
     @ExceptionHandler

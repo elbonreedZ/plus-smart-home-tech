@@ -6,12 +6,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.commerce.contract.warehouse.WarehouseOperations;
+import ru.yandex.practicum.commerce.dto.AddressDto;
+import ru.yandex.practicum.commerce.dto.BookedProductsDto;
 import ru.yandex.practicum.commerce.dto.ShoppingCartDto;
 import ru.yandex.practicum.commerce.exception.ProductInShoppingCartLowQuantityInWarehouseException;
 import ru.yandex.practicum.commerce.logging.Logging;
 import ru.yandex.practicum.commerce.request.AddProductUnitRequest;
-import ru.yandex.practicum.commerce.dto.AddressDto;
-import ru.yandex.practicum.commerce.dto.BookedProductsDto;
 import ru.yandex.practicum.commerce.request.NewProductInWarehouseRequest;
 import ru.yandex.practicum.commerce.warehouse.service.WarehouseService;
 

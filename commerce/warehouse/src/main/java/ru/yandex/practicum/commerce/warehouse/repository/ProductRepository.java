@@ -9,5 +9,6 @@ import java.util.Set;
 
 public interface ProductRepository extends JpaRepository<WarehouseProduct, String> {
     boolean existsByProductId(String id);
+
     List<WarehouseProduct> findByProductIdIn(Set<String> productIds);
 }

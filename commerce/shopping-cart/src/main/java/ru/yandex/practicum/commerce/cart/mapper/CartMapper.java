@@ -2,9 +2,9 @@ package ru.yandex.practicum.commerce.cart.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
-import ru.yandex.practicum.commerce.dto.ShoppingCartDto;
 import ru.yandex.practicum.commerce.cart.model.CartProduct;
 import ru.yandex.practicum.commerce.cart.model.ShoppingCartEntity;
+import ru.yandex.practicum.commerce.dto.ShoppingCartDto;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,7 +36,7 @@ public interface CartMapper {
 
     default Map<String, Integer> toDtoMap(List<CartProduct> cartProducts) {
         Map<String, Integer> products = new HashMap<>();
-        for (CartProduct cartProduct: cartProducts) {
+        for (CartProduct cartProduct : cartProducts) {
             products.put(cartProduct.getProductId(), cartProduct.getQuantity());
         }
         return products;
@@ -44,7 +44,7 @@ public interface CartMapper {
 
     default List<CartProduct> toEntityList(Map<String, Integer> products) {
         List<CartProduct> cartProducts = new ArrayList<>();
-        for (Map.Entry<String, Integer> product: products.entrySet()) {
+        for (Map.Entry<String, Integer> product : products.entrySet()) {
             CartProduct cartProduct = new CartProduct();
             cartProduct.setProductId(product.getKey());
             cartProduct.setQuantity(product.getValue());

@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class CartServiceImpl implements CartService{
+public class CartServiceImpl implements CartService {
 
     private final CartRepository cartRepository;
     private final CartMapper cartMapper;
@@ -35,7 +35,7 @@ public class CartServiceImpl implements CartService{
         Optional<ShoppingCartEntity> maybeShoppingCart = getActualCart(username);
         ShoppingCartEntity shoppingCart;
         shoppingCart = maybeShoppingCart.orElseGet(() ->
-            createShoppingCart(username));
+                createShoppingCart(username));
         checkProductsQuantity(shoppingCart, products);
         saveProducts(shoppingCart, products);
         return getActualCart(username).map(cartMapper::toDto)

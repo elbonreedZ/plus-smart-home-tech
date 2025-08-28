@@ -15,6 +15,7 @@ import ru.yandex.practicum.commerce.request.NewProductInWarehouseRequest;
 public interface WarehouseOperations {
     @PutMapping
     void createProduct(@RequestBody @Valid NewProductInWarehouseRequest request);
+
     @PostMapping("/check")
     BookedProductsDto checkProductsQuantity(@RequestBody ShoppingCartDto cart) throws ProductInShoppingCartLowQuantityInWarehouseException;
 

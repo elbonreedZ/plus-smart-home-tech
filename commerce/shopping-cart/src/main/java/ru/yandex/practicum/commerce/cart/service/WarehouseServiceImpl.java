@@ -11,6 +11,7 @@ import ru.yandex.practicum.commerce.dto.ShoppingCartDto;
 public class WarehouseServiceImpl implements WarehouseService {
 
     private final WarehouseClient warehouseClient;
+
     @Override
     public BookedProductsDto fetchCheckProductsQuantity(ShoppingCartDto cartDto) {
         return warehouseClient.checkProductsQuantity(cartDto);

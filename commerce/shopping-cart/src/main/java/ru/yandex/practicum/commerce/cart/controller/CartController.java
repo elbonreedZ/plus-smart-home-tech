@@ -43,7 +43,7 @@ public class CartController implements ShoppingCartOperations {
     @Logging
     @Override
     public ShoppingCartDto removeProductsFromCart(@RequestParam String username, @RequestBody Set<String> productIds) {
-            return cartService.removeProductsFromCart(username, productIds);
+        return cartService.removeProductsFromCart(username, productIds);
     }
 
     @PostMapping("/change-quantity")

@@ -33,6 +33,7 @@ public class ErrorHandler {
     public ErrorResponse handleSpecifiedProductAlreadyInWarehouse(final SpecifiedProductAlreadyInWarehouseException e) {
         return new ErrorResponse(e.getMessage());
     }
+
     @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse handleThrowable(final Throwable e) {

@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import ru.yandex.practicum.commerce.dto.ErrorResponse;
 import ru.yandex.practicum.commerce.exception.NoProductsInShoppingCartException;
 import ru.yandex.practicum.commerce.exception.NotAuthorizedUserException;
-import ru.yandex.practicum.commerce.dto.ErrorResponse;
 import ru.yandex.practicum.commerce.exception.ProductInShoppingCartLowQuantityInWarehouseException;
 
 import java.util.Objects;

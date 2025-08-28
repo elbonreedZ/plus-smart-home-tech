@@ -21,6 +21,7 @@ public class StoreServiceImpl implements StoreService {
 
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
+
     @Override
     public ProductDto addProduct(ProductDto productDto) {
         ProductEntity product = productMapper.toEntity(productDto);
@@ -55,7 +56,7 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public ProductDto getProductById(String id) {
         ProductEntity product = productRepository.findByProductId(id).orElseThrow(() ->
-            new ProductNotFoundException(String.format("Product with id: %s was not found", id)));
+                new ProductNotFoundException(String.format("Product with id: %s was not found", id)));
         return productMapper.toDto(product);
     }
 

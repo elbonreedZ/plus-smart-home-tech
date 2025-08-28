@@ -15,6 +15,7 @@ import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<ProductEntity, String> {
     boolean existsByProductId(String id);
+
     Optional<ProductEntity> findByProductId(String id);
 
     @Transactional

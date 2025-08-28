@@ -24,13 +24,13 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class WarehouseServiceImpl implements WarehouseService {
 
-    private final WarehouseProductMapper mapper;
-    private final ProductRepository productRepository;
     private static final String[] ADDRESSES =
-            new String[] {"ADDRESS_1", "ADDRESS_2"};
-
+            new String[]{"ADDRESS_1", "ADDRESS_2"};
     private static final String CURRENT_ADDRESS =
             ADDRESSES[Random.from(new SecureRandom()).nextInt(0, 1)];
+    private final WarehouseProductMapper mapper;
+    private final ProductRepository productRepository;
+
     @Override
     public void createProduct(NewProductInWarehouseRequest request) {
         if (productRepository.existsByProductId(request.getProductId())) {
@@ -48,7 +48,7 @@ public class WarehouseServiceImpl implements WarehouseService {
         float volume = 0;
         float weight = 0;
         boolean fragile = false;
-        for (WarehouseProduct product: warehouseProducts) {
+        for (WarehouseProduct product : warehouseProducts) {
             if (product.getQuantity() < cart.getProducts().get(product.getProductId())) {
                 throw new ProductInShoppingCartLowQuantityInWarehouseException(
                         "The product from the basket is not in the required quantity in warehouse.");

@@ -12,6 +12,7 @@ public interface StoreService {
     ProductDto updateProduct(ProductDto productDto);
 
     boolean deactivateProduct(String id);
+
     boolean setQuantityState(SetProductQuantityStateRequest request);
 
     ProductDto getProductById(String id);
