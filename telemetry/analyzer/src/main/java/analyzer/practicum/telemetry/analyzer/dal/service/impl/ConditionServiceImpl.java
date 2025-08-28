@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ConditionServiceImpl implements ConditionService {
     private final ConditionRepository repository;
+
     public Condition save(Condition condition) {
         return repository.save(condition);
     }

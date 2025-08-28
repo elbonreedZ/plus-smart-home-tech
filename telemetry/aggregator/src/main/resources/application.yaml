@@ -1,11 +1,22 @@
-kafka:
-  bootstrap:
-    servers: localhost:9092
-  consumer:
-    group: telemetry.aggregator.sensors
-    poll:
-      timeout: 100
-  topics:
-    telemetry-sensors-v1: telemetry.sensors.v1
-    telemetry-snapshots-v1: telemetry.snapshots.v1
-    telemetry-hubs-v1: telemetry.hubs.v1
+spring:
+  application:
+    name: aggregator
+  config:
+    import: "configserver:"
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: config-server
+      fail-fast: true
+      retry:
+        useRandomPolicy: true
+        max-interval: 6000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    preferIpAddress: true
+    hostname: localhost
+    instance-id: "${spring.application.name}:${random.value}"

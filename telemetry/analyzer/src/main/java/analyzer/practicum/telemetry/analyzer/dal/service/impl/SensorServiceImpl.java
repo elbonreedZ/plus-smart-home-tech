@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class SensorServiceImpl implements SensorService {
     private final SensorRepository repository;
+
     public void save(Sensor sensor) {
         boolean exists = repository.existsByIdAndHubId(sensor.getId(), sensor.getHubId());
         if (!exists) {
