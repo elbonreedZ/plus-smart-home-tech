@@ -7,7 +7,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
 @EnableAspectJAutoProxy
-@EnableFeignClients
+@EnableFeignClients(basePackages = "ru.yandex.practicum.commerce.client")
 public class ShoppingCart {
     public static void main(String[] args) {
         SpringApplication.run(ShoppingCart.class, args);

@@ -10,6 +10,7 @@ import ru.yandex.practicum.commerce.enums.ProductCategory;
 import ru.yandex.practicum.commerce.enums.QuantityState;
 import ru.yandex.practicum.commerce.store.model.ProductEntity;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -29,4 +30,6 @@ public interface ProductRepository extends JpaRepository<ProductEntity, String> 
     int deactivateProduct(String id);
 
     Page<ProductEntity> findAllByProductCategory(ProductCategory productCategory, Pageable pageable);
+
+    List<ProductEntity> findByProductIdIn(List<String> productIds);
 }
