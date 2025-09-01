@@ -2,20 +2,17 @@ package ru.yandex.practicum.commerce.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AccessLevel;
 import lombok.Data;
-import lombok.experimental.FieldDefaults;
 import ru.yandex.practicum.commerce.enums.DeliveryState;
 
 @Data
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class DeliveryDto {
-    String deliveryId;
+    private String deliveryId;
     @NotNull
-    AddressDto fromAddress;
+    private AddressDto fromAddress;
     @NotNull
-    AddressDto toAddress;
+    private AddressDto toAddress;
     @NotBlank
-    String orderId;
-    DeliveryState deliveryState;
+    private String orderId;
+    private DeliveryState deliveryState;
 }

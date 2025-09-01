@@ -6,8 +6,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients(basePackages = "ru.yandex.practicum.commerce.client")
-public class Payment {
+public class DeliveryApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Payment.class, args);
+        SpringApplication.run(DeliveryApplication.class, args);
     }
 }

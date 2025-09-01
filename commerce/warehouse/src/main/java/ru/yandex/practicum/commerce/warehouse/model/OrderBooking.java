@@ -15,11 +15,11 @@ import java.util.Map;
 public class OrderBooking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    private long id;
     @Column(name = "order_id")
-    String orderId;
+    private String orderId;
     @Column(name = "delivery_id")
-    String deliveryId;
+    private String deliveryId;
     @ElementCollection
     @CollectionTable(
             name = "order_booking_products",
@@ -28,5 +28,5 @@ public class OrderBooking {
     )
     @MapKeyColumn(name = "product_code")
     @Column(name = "quantity")
-    Map<String, Integer> products;
+    private Map<String, Integer> products;
 }

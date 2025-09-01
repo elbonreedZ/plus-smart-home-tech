@@ -1,15 +1,13 @@
-package ru.yandex.practicum.commerce.cart;
+package ru.yandex.practicum;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
-@EnableAspectJAutoProxy
 @EnableFeignClients(basePackages = "ru.yandex.practicum.commerce.client")
-public class ShoppingCart {
+public class PaymentApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ShoppingCart.class, args);
+        SpringApplication.run(PaymentApplication.class, args);
     }
 }

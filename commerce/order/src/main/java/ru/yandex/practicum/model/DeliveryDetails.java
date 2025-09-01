@@ -2,24 +2,21 @@ package ru.yandex.practicum.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.AccessLevel;
 import lombok.Data;
-import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
 
 @Embeddable
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 public class DeliveryDetails {
     @Column(name = "delivery_id")
-    String deliveryId;
+    private String deliveryId;
     @Column(name = "delivery_weight")
-    double deliveryWeight;
+    private double deliveryWeight;
     @Column(name = "delivery_volume")
-    double deliveryVolume;
+    private double deliveryVolume;
     @Column(name = "delivery_fragile")
-    boolean fragile;
+    private boolean fragile;
     @Column(name = "delivery_price")
-    BigDecimal deliveryPrice;
+    private BigDecimal deliveryPrice;
 }
